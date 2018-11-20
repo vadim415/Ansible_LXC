@@ -1,0 +1,19 @@
+[S1]
+Linux1 ansible_host=10.0.10.1 ansible_user=admin  ansible_ssh_private_key_file=/home/key.pem |id_rsa
+Linux2 ansible_host= 192.168.5.3 ansible_ssh_port=3099 ansible_ssh_private_key_file=/home/id_rsa
+[st_db]
+192.168.0.8
+192.168.0.9
+
+[st_prod]
+10.0.15.1
+10.0.15.2
+
+[st_dev]
+192.168.99.1
+192.168.99.2
+
+[st_ALL:children]
+st_db
+st_prod
+st_dev
