@@ -2,3 +2,4 @@ ansible all -m ping -u admin
 ansible -i host.txt linux1 -a "free -
 ansible -i host.txt st_prod -a "fdisk -l"   "netstat -tulpn" etc
 ansible -i host.txt all  -e "ansible_python_interpreter=/usr/bine/pythone3"  || if use python3 3.5  etc
+ansible-inventory --list || list host or ip address
