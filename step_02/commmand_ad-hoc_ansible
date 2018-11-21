@@ -1,0 +1,7 @@
+ansible all -m shell -a "uptime"
+
+ansible all -m copy  -a "src=/local.file dest=/home/user/ mode 764 " -b  \\ copy file
+ansible all -m file   -a "path=/home/user/privet.txt state=absent  " -b
+ansible all or -i host.txt  -m yum or apt -a "name=httpd or name=apache2 state=latest" -b //install apache2
+ansible all -m yum -a "state=started  enabled=yes" -b  \\ autorun
+remove ==  -m apt or yum  -a "name=httpd or name=apache2 state=removed" //removed package
