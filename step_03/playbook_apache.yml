@@ -1,0 +1,25 @@
+---
+- name: Install apache2
+  hosts: all
+  become: yes
+
+  vars:
+    source_file: ./file/index.html
+    destin_file: /var/www/html
+  tasks:
+  - name: Install apache web server
+    yum: nmae=httpd  state=latest
+   
+  - name: copy home page
+    copy: src={{  source_file }} dest={{ destin_file  }} owner= www-data mode=0666
+    notify: Restart apache
+ 
+  - name: Start a web server service
+    service: name=httpd state=started enabled=yes
+    
+  handlers:
+  - name: Restart apache
+    service: name=httpd  state=restarted 
+  
+
+
