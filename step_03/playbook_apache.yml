@@ -8,8 +8,17 @@
     destin_file: /var/www/html
   tasks:
   - name: Install apache web server
-    yum: nmae=httpd  state=latest
-   
+    yum: name=httpd  state=latest
+    when: ansible_os_family == "RadHat"
+
+
+
+  - name: Install apache2 for ubuntu 16:04
+    apt: name=apache2 state=latest
+    when: ansible_os_family == "Debian"
+
+    #when: ansible_os_family !== "RadHat"
+
   - name: copy home page
     copy: src={{  source_file }} dest={{ destin_file  }} owner= www-data mode=0666
     notify: Restart apache
